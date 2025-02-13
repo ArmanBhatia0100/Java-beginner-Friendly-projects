@@ -1,6 +1,3 @@
-Here's a README.md file for the Address Book application:
-
-```markdown
 # Address Book Application
 
 ## Description
