@@ -17,5 +17,5 @@ To play the game, follow these steps:
 Contributions to this project are welcome. If you find a bug or have a suggestion for improvement, please open an issue or submit a pull request.
 
 ## Credits
-This project was created by Kalutu Daniel.
+This project was created by Arman Bhatia.
 
