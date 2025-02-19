@@ -9,8 +9,8 @@ The Library Management System is a basic Java application that allows users to m
 - Return a book: Users can return a checked-out book by specifying its title. The book will be marked as available.
 
 ## Usage
-1. Compile the Java source code: `javac LibraryManagementSystem.java`
-2. Run the application: `java LibraryManagementSystem`
+1. Import and compile the Java source code using and IDE: ` LibraryManagementSystem.java`
+2. Run the application: `LibraryManagementSystem`
 3. Follow the prompts in the command-line interface to interact with the Library Management System.
 4. Enter `0` to exit the application. The book details will be automatically saved to the file.
 
