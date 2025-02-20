@@ -3,6 +3,8 @@
  */
 package arman.library_management_system;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -99,9 +101,26 @@ public class Library_Management_System {
         if (bookIndex < library.getAvailableBooks().size()) {
             Book book = library.getAvailableBooks().get(bookIndex);
             System.out.println(library.bookCheckout(book));
+
+            // if the book is issued the add it to file.
+            try {
+                addCheckedoutBookToFile(book);
+            } catch (IOException e) {
+                System.err.print("Book issuing file cannot be created");
+            }
+
         } else {
             System.out.println("No book at this number");
         }
+    }
+
+    private static void addCheckedoutBookToFile(Book book) throws IOException {
+        String filename = "issuedBook.txt";
+        FileWriter fs = new FileWriter(filename, true);
+        fs.write(book.getTitle() + " " + book.getAuthor()+"\n");
+        
+        System.out.println("File Successfully Created.");
+        fs.close();
     }
 
     private static void bookReturn(String bookTitle) {
