@@ -27,6 +27,10 @@ public class Bank {
         accountList.add(bankAcc);
     }
 
+    public void deposit(BankAccount CustomerAcc, double amount){
+        CustomerAcc.setBalance(amount);
+    }
+    
     public ArrayList<BankAccount> getAccountList() {
         return accountList;
     }

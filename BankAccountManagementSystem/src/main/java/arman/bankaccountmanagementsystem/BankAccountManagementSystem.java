@@ -106,10 +106,37 @@ public class BankAccountManagementSystem {
                     name = sc.next();
                     System.out.println("What is you email?");
                     email = sc.next();
-                    addAccount(name, email);
+                    BankAccount account = verifyAccount(name, email);
+
+                    if ((account = verifyAccount(name, email)) == null) {
+                        addAccount(name, email);
+                    } else {
+                        System.out.println("Account Already exists: ");
+                        System.out.println(account);
+                    }
 
                 }
                 case 2 -> {
+
+                    String name;
+                    String email;
+
+                    System.out.println("What is you Name?");
+                    name = sc.next();
+                    System.out.println("What is you email?");
+                    email = sc.next();
+                    BankAccount CustomerAcc;
+
+//verify account
+                    if ((CustomerAcc = verifyAccount(name, email)) == null) {
+                        System.out.println("No Account Found, Create Account");
+                    } else {
+                        System.out.println("How much you want to deposit?");
+                        double amount = sc.nextDouble();
+                        deposit(CustomerAcc, amount);
+                    }
+
+//Deposit Amount
                 }
                 case 3 -> {
                 }
@@ -130,11 +157,10 @@ public class BankAccountManagementSystem {
     }
 
     private static void addAccount(String name, String email) {
-        BankAccount acc = null;
+        // This function checks if the account already exist in the database if yes, it will return the account info.
+        // If the account is no found in the database it wil create a new account and store it in the database.
 
-        /*
-         get the loop through the list of account and see if we can find the account if not create a new one.
-         */
+        BankAccount acc = null;
         for (int i = 0; i < bank.getAccountList().size(); i++) {
 
             String holderName = bank.getAccountList().get(i).getHolderName();
@@ -164,5 +190,28 @@ public class BankAccountManagementSystem {
         for (BankAccount account : bank.getAccountList()) {
             System.out.println(account);
         }
+    }
+
+    public static void deposit(BankAccount customerAcc, double amount) {
+        bank.deposit(customerAcc, amount);
+    }
+
+    private static BankAccount verifyAccount(String name, String email) {
+
+        BankAccount acc = null;
+        for (int i = 0; i < bank.getAccountList().size(); i++) {
+
+            String holderName = bank.getAccountList().get(i).getHolderName();
+            String holderEmail = bank.getAccountList().get(i).getHolderEmail();
+
+            if (holderName.equalsIgnoreCase(name) & holderEmail.equalsIgnoreCase(email)) {
+
+                acc = bank.getAccountList().get(i);
+                break;
+
+            }
+
+        }
+        return acc;
     }
 }

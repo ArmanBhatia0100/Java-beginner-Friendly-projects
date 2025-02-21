@@ -38,7 +38,6 @@ public class BankAccount {
     public double getBalance() {
         return balance;
     }
-    
 
     public void setHolderName(String holderName) {
         this.holderName = holderName;
