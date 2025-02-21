@@ -1,7 +1,3 @@
-Here’s a **README.md** for your project, structured to explain its purpose, features, and setup instructions:
-
----
-
 # **Bank Account Management System**
 
 ## **Description**
