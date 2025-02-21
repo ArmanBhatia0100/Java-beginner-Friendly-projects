@@ -1,27 +1,26 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package arman.bankaccountmanagementsystem;
+
+import java.util.Scanner;
 
 /*
 Create a new bank account.
 Deposit money into an existing bank account.
 Withdraw money from an existing bank account.
 Check the balance of an existing bank account.
-*/
+ */
 
-/*
+ /*
 Entities
 1. Bank
 2. BankManagementSystem
 3. BankAccount
-*/
-
-
-/*
+ */
+ /*
 Feature 1: Create Bank Account
-ask user about holderName and email?
+ask user about getHolderName and email?
 if the account exists tell show the Acccount number
 If does not exists, Create a new Accout with holder name and email, generate a random 10 Digit bank account number.
 
@@ -79,13 +78,91 @@ else
     show menu again
 
 
-*/
-
-
-
+ */
 public class BankAccountManagementSystem {
 
+    private static Bank bank = Bank.getBank();
+    private static Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        int menuSelection;
+
+        do {
+            System.out.print("1. Add Account \n"
+                    + "2. Deposit \n"
+                    + "3. Withdraw \n"
+                    + "4. Check balance\n"
+                    + "5. Show all bank Accounts \n"
+                    + "6. Exit \n"
+                    + "Enter your choice: ");
+            menuSelection = sc.nextInt();
+
+            switch (menuSelection) {
+                case 1 -> {
+                    String name;
+                    String email;
+
+                    System.out.println("What is you Name?");
+                    name = sc.next();
+                    System.out.println("What is you email?");
+                    email = sc.next();
+                    addAccount(name, email);
+
+                }
+                case 2 -> {
+                }
+                case 3 -> {
+                }
+                case 4 -> {
+                }
+                case 5 -> {
+                    getAllAccounts();
+                }
+                case 6 -> {
+                    System.out.println("Bye.. Thank you ");
+                }
+                default -> {
+                    throw new IllegalArgumentException("try again");
+                }
+            }
+
+        } while (menuSelection != 6);
+    }
+
+    private static void addAccount(String name, String email) {
+        BankAccount acc = null;
+
+        /*
+         get the loop through the list of account and see if we can find the account if not create a new one.
+         */
+        for (int i = 0; i < bank.getAccountList().size(); i++) {
+
+            String holderName = bank.getAccountList().get(i).getHolderName();
+            String holderEmail = bank.getAccountList().get(i).getHolderEmail();
+
+            if (holderName.equalsIgnoreCase(name) & holderEmail.equalsIgnoreCase(email)) {
+
+                acc = bank.getAccountList().get(i);
+                System.out.println("Account alread Exists: "
+                        + bank.getAccountList().get(i).getHolderName()
+                        + " " + bank.getAccountList().get(i).getAccNumber());
+
+                break;
+
+            }
+
+        }
+        if (acc == null) {
+            BankAccount newAccount = new BankAccount(name, email);
+            bank.addAccount(newAccount);
+            System.out.println("Account Created");
+        }
+
+    }
+
+    public static void getAllAccounts() {
+        for (BankAccount account : bank.getAccountList()) {
+            System.out.println(account);
+        }
     }
 }
