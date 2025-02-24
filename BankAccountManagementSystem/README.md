@@ -1,100 +1,148 @@
-# **Bank Account Management System**
+# Bank Account Management System
 
-## **Description**
-This Java-based Bank Account Management System allows users to manage their bank accounts. The system supports the following features:
+**Author:** Arman  
+**Date:** February 24, 2025  
+**Package:** `arman.bankaccountmanagementsystem`
 
-- **Create a Bank Account**
-- **Deposit Money**
-- **Withdraw Money**
-- **Check Account Balance**
-
-The system ensures proper account management, including validation for account creation, deposits, and withdrawals, and maintains a list of bank accounts in the system.
+Welcome to the **Bank Account Management System**, a sleek and efficient Java application designed to manage bank accounts with ease. Whether you're creating accounts, depositing funds, withdrawing money, or generating reports, this system has you covered—all wrapped in a user-friendly console interface. Built with clean code and thoughtful design, it’s a perfect blend of functionality and simplicity.
 
 ---
 
-## **Entities**
-1. **Bank** – Stores a list of all bank accounts.
-2. **BankManagementSystem** – Provides operations such as creating accounts, depositing, withdrawing, and checking balance.
-3. **BankAccount** – Represents an individual bank account with details like account number, holder name, and balance.
+## Overview
+
+This project simulates a basic banking system with core functionalities to manage accounts. It leverages object-oriented principles and a singleton `Bank` class to maintain a centralized list of `BankAccount` objects. Whether you're a beginner learning Java or a seasoned coder exploring practical applications, this system offers a robust foundation to build upon.
+
+### Entities
+1. **Bank**: The central entity managing all accounts (singleton pattern).
+2. **BankManagementSystem**: The main class driving the console-based interface.
+3. **BankAccount**: Represents individual accounts with holder details, account number, and balance.
 
 ---
 
-## **Features**
+## Features
 
-### **1. Create Bank Account**
-- Ask the user for **holder name** and **email**.
-- If an account exists with the same information, the system will show the **account number**.
-- If no account exists, the system will create a new account with a **random 10-digit account number**.
-- The initial balance will be **set to $0**.
-- **Account numbers cannot be duplicated**.
-- All created accounts are added to the **Bank’s account list**.
+### 1. Create a New Bank Account
+- **What it Does**: Prompts for the account holder's name and email, then creates a new account if it doesn’t already exist.
+- **How it Works**:
+  - Checks if an account with the same name and email exists.
+  - If it exists, displays the existing account number.
+  - If not, generates a unique 10-digit account number and initializes the balance to $0.
+- **Constraints**:
+  - Account numbers are unique and randomly generated.
+  - Accounts are stored in a list within the `Bank` class.
 
-### **2. Deposit Money**
-- Ask the user for the **account number**.
-- If the account exists, prompt the user for a **deposit amount** (can be int or double).
-- The **deposit amount must be greater than or equal to $50** and **cannot be negative**.
-- The balance is updated accordingly.
-- If the account doesn't exist, the system will prompt the user to **create a new account**.
+### 2. Deposit Money
+- **What it Does**: Allows depositing funds into an existing account.
+- **How it Works**:
+  - Asks for the account holder’s name and email to verify the account.
+  - If found, prompts for a deposit amount and updates the balance.
+  - If not found, offers to create a new account.
+- **Constraints**:
+  - Deposit amount must be at least $50.
+  - Negative amounts are not allowed.
 
-### **3. Withdraw Money**
-- Ask the user for the **account number**.
-- If the account exists, ask the user for a **withdrawal amount** (can be int or double).
-- **Balance cannot go below $0** after a withdrawal.
-- If the withdrawal would cause the balance to go negative, the user is asked to **enter a valid amount**.
-- If the account doesn’t exist, the user will be prompted to create a new account.
+### 3. Withdraw Money
+- **What it Does**: Facilitates withdrawing funds from an existing account.
+- **How it Works**:
+  - Verifies the account using the holder’s name and email.
+  - If found, prompts for a withdrawal amount and updates the balance.
+  - If the withdrawal would result in a negative balance, prompts for a new amount.
+  - If not found, offers to create a new account.
+- **Constraints**:
+  - Balance cannot drop below $0 after withdrawal.
 
-### **4. Check Account Balance**
-- Ask the user for **account number** and **account holder name**.
-- If the account exists, show the **current balance**.
-- If the account doesn’t exist, ask if the user wants to **create the account**.
+### 4. Check Account Balance
+- **What it Does**: Displays the balance of an existing account.
+- **How it Works**:
+  - Verifies the account by name and email.
+  - If found, shows the current balance.
+  - If not found, offers to create a new account.
+
+### 5. Show All Accounts
+- **What it Does**: Lists all accounts managed by the bank.
+- **How it Works**: Iterates through the `Bank`’s account list and prints each account’s details.
+
+### 6. Generate Report to File
+- **What it Does**: Exports all account details to a `Report.txt` file.
+- **How it Works**: Uses `FileWriter` to append account information to the file, ensuring persistence across runs.
 
 ---
 
-## **Setup Instructions**
+## How to Use
 
 ### Prerequisites
-- **Java JDK 8 or later** installed on your system.
+- Java Development Kit (JDK) 8 or higher installed.
+- An IDE (e.g., NetBeans, IntelliJ) or a command-line environment to compile and run the code.
 
 ### Running the Program
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/bank-account-management.git
+1. Clone or download the project to your local machine.
+2. Navigate to the `src` directory:  
    ```
-2. Navigate to the project directory:
-   ```bash
-   cd bank-account-management
+   cd src/arman/bankaccountmanagementsystem
    ```
-3. Compile and run the program:
-   ```bash
-   javac BankManagementSystem.java
-   java BankManagementSystem
+3. Compile the Java files:  
    ```
+   javac BankAccountManagementSystem.java
+   ```
+4. Run the application:  
+   ```
+   java BankAccountManagementSystem
+   ```
+5. Follow the interactive menu to manage accounts!
 
----
-
-## **Project Structure**
+### Menu Options
 ```
-/bank-account-management
-  ├── Bank.java
-  ├── BankAccount.java
-  ├── BankManagementSystem.java
-  └── README.md
+1. Add Account
+2. Deposit
+3. Withdraw
+4. Show all bank accounts
+5. Generate Report to file
+6. Exit
+Enter your choice: 
 ```
 
 ---
 
-## **Contributing**
+## Code Structure
 
-1. Fork the repository.
-2. Create a new branch for your feature.
-3. Commit your changes.
-4. Push your branch and create a pull request.
+- **`BankAccountManagementSystem.java`**: The main class with the console interface and menu logic.
+- **`Bank.java`** (assumed): A singleton class managing the list of accounts and core operations (e.g., `addAccount`, `deposit`, `withdraw`).
+- **`BankAccount.java`** (assumed): Represents individual accounts with fields like `holderName`, `holderEmail`, `accNumber`, and `balance`.
+
+### Key Methods
+- `addAccount(String name, String email)`: Creates or retrieves an account.
+- `deposit(BankAccount account, double amount)`: Adds funds with validation.
+- `withdraw(BankAccount account, double amount)`: Removes funds with balance checks.
+- `verifyAccount(String name, String email)`: Checks if an account exists.
+- `generateReportToFile()`: Writes account data to `Report.txt`.
 
 ---
 
-## **License**
-This project is licensed under the MIT License.
+## Constraints & Design Choices
+- **Unique Account Numbers**: Ensures no duplicates for reliable identification.
+- **Minimum Deposit ($50)**: Encourages meaningful transactions.
+- **Non-Negative Balance**: Protects against overdrafts.
+- **Case-Insensitive Verification**: Matches names and emails flexibly (e.g., "arman" = "Arman").
+- **File Persistence**: Appends to `Report.txt` for record-keeping.
 
+---
 
-## Credits
-This project is created by Arman Bhatia.
+## Future Enhancements
+- Add PIN or password authentication for security.
+- Implement a GUI using JavaFX or Swing for a modern look.
+- Store data in a database (e.g., SQLite) instead of memory and files.
+- Support multiple currencies or interest calculations.
+
+---
+
+## About the Author
+Hi, I’m **Arman**, the creator of this Bank Account Management System! I built this project to explore Java’s object-oriented features and create a practical tool that’s both functional and fun to use. Feel free to fork, tweak, or contribute—I’d love to see where this system can go!
+
+---
+
+## License
+This project is open-source under the default license (see `license-default.txt` in the project files). Feel free to use, modify, and share it as you see fit!
+
+---
+
+Enjoy managing your virtual bank with ease and style! Let me know if you have questions or ideas—happy coding!
