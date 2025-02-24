@@ -3,7 +3,11 @@
  */
 package arman.bankaccountmanagementsystem;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
 Create a new bank account.
@@ -88,13 +92,12 @@ public class BankAccountManagementSystem {
         int menuSelection;
 
         do {
-            System.out.print
-        (
+            System.out.print(
                     "1. Add Account \n"
                     + "2. Deposit \n"
                     + "3. Withdraw \n"
-                    + "4. Check balance\n"
-                    + "5. Show all bank accounts \n"
+                    + "4. Show all bank accounts \n"
+                    + "5. Generate Report to file \n"
                     + "6. Exit \n"
                     + "Enter your choice: "
             );
@@ -157,12 +160,17 @@ public class BankAccountManagementSystem {
                         double amount = sc.nextDouble();
                         withdraw(CustomerAcc, amount);
                     }
-
                 }
+
                 case 4 -> {
+                    getAllAccounts();
                 }
                 case 5 -> {
-                    getAllAccounts();
+                try {
+                    generateReportToFile();
+                } catch (IOException ex) {
+                    Logger.getLogger(BankAccountManagementSystem.class.getName()).log(Level.SEVERE, "cannot add file", ex);
+                }
                 }
                 case 6 -> {
                     System.out.println("Bye.. Thank you ");
@@ -236,5 +244,20 @@ public class BankAccountManagementSystem {
 
         }
         return acc;
+    }
+
+    private static void generateReportToFile() throws IOException {
+
+        FileWriter fr = new FileWriter("Report.txt", true);
+
+        bank.getAccountList().forEach(account -> {
+            try {
+                fr.write(account + " \n");
+            } catch (IOException ex) {
+                Logger.getLogger(BankAccountManagementSystem.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        fr.close();
+
     }
 }
