@@ -27,14 +27,30 @@ public class Bank {
         accountList.add(bankAcc);
     }
 
-    public void deposit(BankAccount CustomerAcc, double amount){
-        CustomerAcc.setBalance(amount);
+    public void deposit(BankAccount CustomerAcc, double amount) {
+        double currentBalance = CustomerAcc.getBalance();
+        double amountToAdd = Math.abs(amount);
+        double finalAmount = currentBalance + amountToAdd;
+
+        if (finalAmount >= 0) {
+            CustomerAcc.setBalance(finalAmount);
+        } 
     }
-    
+
+    public void withdraw(BankAccount CustomerAcc, double amount) {
+        double currentBalance = CustomerAcc.getBalance();
+        double amountToMinus =  Math.abs(amount);
+        double finalAmount = currentBalance - amountToMinus;
+
+        if (currentBalance > 0 && finalAmount >= 0) {
+            CustomerAcc.setBalance(finalAmount);
+        } else {
+            System.out.println("Sorry not enough balance to withdraw, Change amount");
+        }
+    }
+
     public ArrayList<BankAccount> getAccountList() {
         return accountList;
     }
-    
-    
 
 }

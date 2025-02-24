@@ -88,13 +88,16 @@ public class BankAccountManagementSystem {
         int menuSelection;
 
         do {
-            System.out.print("1. Add Account \n"
+            System.out.print
+        (
+                    "1. Add Account \n"
                     + "2. Deposit \n"
                     + "3. Withdraw \n"
                     + "4. Check balance\n"
-                    + "5. Show all bank Accounts \n"
+                    + "5. Show all bank accounts \n"
                     + "6. Exit \n"
-                    + "Enter your choice: ");
+                    + "Enter your choice: "
+            );
             menuSelection = sc.nextInt();
 
             switch (menuSelection) {
@@ -135,10 +138,26 @@ public class BankAccountManagementSystem {
                         double amount = sc.nextDouble();
                         deposit(CustomerAcc, amount);
                     }
-
-//Deposit Amount
                 }
                 case 3 -> {
+                    //   Withdraw:      
+                    String name;
+                    String email;
+
+                    System.out.println("What is you Name?");
+                    name = sc.next();
+                    System.out.println("What is you email?");
+                    email = sc.next();
+                    BankAccount CustomerAcc;
+
+                    if ((CustomerAcc = verifyAccount(name, email)) == null) {
+                        System.out.println("No Account Found, Create Account");
+                    } else {
+                        System.out.println("How much you want to Withdraw?");
+                        double amount = sc.nextDouble();
+                        withdraw(CustomerAcc, amount);
+                    }
+
                 }
                 case 4 -> {
                 }
@@ -194,6 +213,10 @@ public class BankAccountManagementSystem {
 
     public static void deposit(BankAccount customerAcc, double amount) {
         bank.deposit(customerAcc, amount);
+    }
+
+    public static void withdraw(BankAccount customerAcc, double amount) {
+        bank.withdraw(customerAcc, (amount));
     }
 
     private static BankAccount verifyAccount(String name, String email) {

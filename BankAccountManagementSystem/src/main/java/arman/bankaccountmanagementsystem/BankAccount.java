@@ -43,8 +43,8 @@ public class BankAccount {
         this.holderName = holderName;
     }
 
-    public void setBalance(double amount) {
-        this.balance += amount;
+    public void setBalance(double finalAmouint) {
+        this.balance = finalAmouint;
     }
 
     @Override
