@@ -11,7 +11,7 @@ Here’s a quick rundown of what you’ll find in this repository:
 1. **AddressBook**  
    Keep your contacts organized with this simple yet powerful address management system.  
    _Tech Stack_: [Java]  
-   ![AddressBook Screenshot](images/addressbook.png)
+   ![AddressBook Screenshot](gitImages/addressbook.png)
 
 2. **BankAccountManagementSystem**  
    A robust system to manage bank accounts, transactions, and balances. Perfect for learning OOP concepts!  
@@ -21,17 +21,17 @@ Here’s a quick rundown of what you’ll find in this repository:
 3. **ExpenseTracker**  
    Track your spending and stay on budget with this handy tool.  
    _Tech Stack_: [Java,Swing]  
-   ![Expense Tracker](images/expensetracker.png)
+   ![Expense Tracker](gitImages/expensetracker.png)
 
 4. **GuessingGame**  
    A fun number-guessing game to test your luck and logic. Can you beat the odds?  
    _Tech Stack_: [Java]  
-   ![Guessing Game](images/guessinggame.png)
+   ![Guessing Game](gitImages/guessinggame.png)
 
 5. **Hangman_Game**  
    The classic word-guessing game with a twist. Save the hangman before it’s too late!  
    _Tech Stack_: [Java]  
-   ![Hangman Game](images/hangman.png)
+   ![Hangman Game](gitImages/hangman.png)
 
 ---
 
@@ -58,11 +58,11 @@ Here’s a quick rundown of what you’ll find in this repository:
 
 Here’s a sneak peek at what you’re in for:
 
-| Project        | Preview                                      |
-| -------------- | -------------------------------------------- |
-| AddressBook    | ![AddressBook](images/addressbook.png)       |
-| ExpenseTracker | ![ExpenseTracker](images/expensetracker.png) |
-| Hangman Game   | ![Hangman](images/hangman.png)               |
+| Project        | Preview                                         |
+| -------------- | ----------------------------------------------- |
+| AddressBook    | ![AddressBook](gitImages/addressbook.png)       |
+| ExpenseTracker | ![ExpenseTracker](gitImages/expensetracker.png) |
+| Hangman Game   | ![Hangman](gitImages/hangman.png)               |
 
 ---
 
