@@ -16,7 +16,7 @@ Here’s a quick rundown of what you’ll find in this repository:
 2. **BankAccountManagementSystem**  
    A robust system to manage bank accounts, transactions, and balances. Perfect for learning OOP concepts!  
    _Tech Stack_: [Java]  
-   ![Bank Screenshot](images/bankaccount.png)
+   ![Bank Screenshot](gitImages/bankaccount.png)
 
 3. **ExpenseTracker**  
    Track your spending and stay on budget with this handy tool.  
